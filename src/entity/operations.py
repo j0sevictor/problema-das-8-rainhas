@@ -1,12 +1,12 @@
 from .entity import Entity, SIZE
 from random import randint
 
-def fitness(entity: Entity):
+def fitness(entity: Entity) -> int:
     """
     Avalia a qualidade de um indivíduo.\n
     Dado pela quantidade pares de rainhas que não se ameaçam. 
     """
-    fitValue = 0
+    fitValue: int = 0
     for i in range(SIZE):
         for j in range(i + 1, SIZE):
             # Checa se o par de rainhas i, j está na mesma linha
