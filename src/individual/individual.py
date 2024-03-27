@@ -1,17 +1,19 @@
 
 SIZE = 8
+RANGE_START = 1
+RANGE_END = 8
 
-class Entity():
+class Individual():
     __id: int = 0
 
     def __init__(self, vector: list[int], generation: int) -> None:
         if len(vector) != SIZE:
             raise ValueError(f'O vetor do indivíduo deve conter exatamente {SIZE} posições')
 
-        self.__id: int = Entity.__id
+        self.__id: int = Individual.__id
         self.__generation: int = generation
         self.__vector: list[int] = vector
-        Entity.__id += 1
+        Individual.__id += 1
 
     def getId(self) -> int:
         """
@@ -44,12 +46,22 @@ class Entity():
         if index < 0 or index >= SIZE:
             raise ValueError('Argumento index fora do limite do vetor')
         return self.__vector[index]
+    
+    def set(self, index: int, value: int) -> None:
+        """
+        Altera o valor do gene da posição ``index``.\n
+        """
+        if value < RANGE_START or value > RANGE_END:
+            raise ValueError('O valor passado está fora do limite permitido')
+        if index < 0 or index >= SIZE:
+            raise ValueError('O index passado está fora do limite do vetor')
+        self.__vector[index] = value
 
     def __eq__(self, __value: object) -> bool:
         """
         Compara se o vertor dos indivíduos são iguais.
         """
-        if isinstance(__value, Entity) and __value.getVector() == self.getVector():
+        if isinstance(__value, Individual) and __value.getVector() == self.getVector():
             return True
         return False
 
