@@ -1,1 +1,1 @@
-from .operations import Entity, fitness
+from .operations import Entity, fitness, crossover
