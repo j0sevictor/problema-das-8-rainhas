@@ -1,5 +1,4 @@
 from algorithms import GeneticAlgorithm, HillClimbing, Algorithm
-from os import system
 
 def main() -> None:
     while True:
