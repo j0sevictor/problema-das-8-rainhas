@@ -93,6 +93,9 @@ def fitness(individual: Individual) -> int:
     return fitValue 
 
 def generateStartedIndividual() -> Individual:
+    """
+    Gera um indivíduo com valores aleatórios nos genes.
+    """
     vector: list[int] = []
     for _ in range(SIZE):
         vector.append(randint(RANGE_START, RANGE_END))

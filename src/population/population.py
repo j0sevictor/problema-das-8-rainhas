@@ -1,6 +1,6 @@
 from individual import Individual, generateStartedIndividual
 from random import choices
-from parameters import MAX_TAM_POPULATION, BEST_FITNESS
+from parameters import MAX_TAM_POPULATION
 
 class Population():
 
@@ -79,6 +79,9 @@ class Population():
         return self.__individuals[0]
     
     def removeWoseIndividual(self) -> None:
+        """
+        Remove o indivíduo com pior valor de ``fitness``.
+        """
         individual = self.__individuals.pop()
         self.__totalFitness -= individual.getFitness()
         self.__qtdIndividuals -= 1
@@ -95,12 +98,19 @@ class Population():
         return strPop
 
 def generateStartedPopulation() -> Population:
+    """
+    Gera um população de indivíduos gerados aleatóriamente.\n
+    O tamanho da população é definido por ``MAX_TAM_POPULATION``.
+    """
     population = Population()
     for _ in range(MAX_TAM_POPULATION):
         population.add(generateStartedIndividual())
     return population
 
 def selectParents(population: Population, probabilities: list[float]) -> tuple[Individual, Individual]:
+    """
+    Seleciona dois indivíduos da população com base nas probabilidades de cada um.
+    """
     parent1 = choices(population.getIndividuals(), weights=probabilities)[0]
     parent2 = choices(population.getIndividuals(), weights=probabilities)[0]
     while parent1.getId() == parent2.getId():
@@ -108,9 +118,12 @@ def selectParents(population: Population, probabilities: list[float]) -> tuple[I
     return parent1, parent2
 
 def createProbabilities(population: Population) -> list[float]:
+    """
+    Gera uma lista com as probabilidades de cada indivíduo da população ser escolhido.
+    """
     probabilities = []
     for individual in population.getIndividuals():
-        probabilities.append(individual.getFitness() / BEST_FITNESS)
+        probabilities.append(individual.getFitness() / population.getTotalFitness())
     return probabilities
 
 def addPopulations(oldPopulation: Population, newPopulation: Population) -> None:
