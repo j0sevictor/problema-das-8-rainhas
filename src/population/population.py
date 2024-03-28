@@ -1,6 +1,6 @@
 from individual import Individual, generateStartedIndividual
 from random import choices
-from parameters import MAX_TAM_POPULATION
+from parameters import MAX_TAM_POPULATION, BEST_FITNESS
 
 class Population():
 
@@ -110,7 +110,7 @@ def selectParents(population: Population, probabilities: list[float]) -> tuple[I
 def createProbabilities(population: Population) -> list[float]:
     probabilities = []
     for individual in population.getIndividuals():
-        probabilities.append(individual.getFitness() / population.getTotalFitness())
+        probabilities.append(individual.getFitness() / BEST_FITNESS)
     return probabilities
 
 def addPopulations(oldPopulation: Population, newPopulation: Population) -> None:

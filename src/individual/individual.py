@@ -86,9 +86,9 @@ def fitness(individual: Individual) -> int:
             # Checa se o par de rainhas i, j está na mesma linha
             if individual.get(i) == individual.get(j): continue
             # Checa se o par de rainhas i, j está na mesma diagonal primária
-            if abs(i - individual.get(i)) == abs(j - individual.get(j)): continue
+            if (i - individual.get(i)) == (j - individual.get(j)): continue
             # Checa se o par de rainhas i, j está na mesma diagonal secundária
-            if (i + j) == (SIZE + 1): continue
+            if (i + individual.get(i)) == (j + individual.get(j)): continue
             fitValue += 1
     return fitValue 
 

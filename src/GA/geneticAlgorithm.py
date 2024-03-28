@@ -18,7 +18,7 @@ class GeneticAlgorithm():
         return self.__population.bestIndividual().getFitness()
     
     def hasBestFitness(self) -> bool:
-        return self.bestFitness == BEST_FITNESS
+        return self.bestFitness() == BEST_FITNESS
     
     def removeBadIndividuals(self) -> None:
         while self.getPopulation().getPopulationSize() > MAX_TAM_POPULATION:
