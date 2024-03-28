@@ -1,10 +1,8 @@
-
-SIZE = 8
-RANGE_START = 1
-RANGE_END = 8
+from random import randint
+from parameters import SIZE, RANGE_START, RANGE_END
 
 class Individual():
-    __id: int = 0
+    __id: int = 1
 
     def __init__(self, vector: list[int], generation: int) -> None:
         if len(vector) != SIZE:
@@ -13,6 +11,8 @@ class Individual():
         self.__id: int = Individual.__id
         self.__generation: int = generation
         self.__vector: list[int] = vector
+        self.__fitness: int = fitness(self)
+
         Individual.__id += 1
 
     def getId(self) -> int:
@@ -39,9 +39,15 @@ class Individual():
         """
         return len(self.__vector)
     
+    def getFitness(self) -> int:
+        """
+        Retorna a qualidade do indivíduo.
+        """
+        return self.__fitness
+    
     def get(self, index: int) -> int:
         """
-        Retorna o valor da posição do vetor especificada pelo index.
+        Retorna o valor da posição do vetor especificada pelo ``index``.
         """
         if index < 0 or index >= SIZE:
             raise ValueError('Argumento index fora do limite do vetor')
@@ -58,10 +64,36 @@ class Individual():
         self.__vector[index] = value
 
     def __eq__(self, __value: object) -> bool:
-        """
-        Compara se o vertor dos indivíduos são iguais.
-        """
         if isinstance(__value, Individual) and __value.getVector() == self.getVector():
             return True
         return False
+    
+    def __repr__(self) -> str:
+        return f'Individual(generation={self.__generation}, id={self.__id}, vector={self.__vector}, fitness={self.__fitness})'
+    
+    def __str__(self) -> str:
+        return f'Generation {self.getGeneration():2} | Genes {self.getVector()} | Fitness {self.getFitness():2} | ID {self.getId()}'
 
+
+def fitness(individual: Individual) -> int:
+    """
+    Avalia a qualidade de um indivíduo.\n
+    Dado pela quantidade pares de rainhas que não se ameaçam. 
+    """
+    fitValue: int = 0
+    for i in range(SIZE):
+        for j in range(i, SIZE):
+            # Checa se o par de rainhas i, j está na mesma linha
+            if individual.get(i) == individual.get(j): continue
+            # Checa se o par de rainhas i, j está na mesma diagonal primária
+            if abs(i - individual.get(i)) == abs(j - individual.get(j)): continue
+            # Checa se o par de rainhas i, j está na mesma diagonal secundária
+            if (i + j) == (SIZE + 1): continue
+            fitValue += 1
+    return fitValue 
+
+def generateStartedIndividual() -> Individual:
+    vector: list[int] = []
+    for _ in range(SIZE):
+        vector.append(randint(RANGE_START, RANGE_END))
+    return Individual(vector, 0)

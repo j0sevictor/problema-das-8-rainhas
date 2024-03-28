@@ -1,24 +1,6 @@
-from .individual import Individual, SIZE, RANGE_END, RANGE_START
+from .individual import Individual
 from random import randint, choices
-
-MUTATION_RATE = .01
-
-def fitness(individual: Individual) -> int:
-    """
-    Avalia a qualidade de um indivíduo.\n
-    Dado pela quantidade pares de rainhas que não se ameaçam. 
-    """
-    fitValue: int = 0
-    for i in range(SIZE):
-        for j in range(i + 1, SIZE):
-            # Checa se o par de rainhas i, j está na mesma linha
-            if individual.get(i) == individual.get(j): continue
-            # Checa se o par de rainhas i, j está na mesma diagonal primária
-            if abs(i - individual.get(i)) == abs(j - individual.get(j)): continue
-            # Checa se o par de rainhas i, j está na mesma diagonal secundária
-            if (i + j) == (SIZE + 1): continue
-            fitValue += 1
-    return fitValue 
+from parameters import SIZE, RANGE_END, RANGE_START, MUTATION_RATE
 
 def crossover(father: Individual, mother: Individual, generation: int) -> tuple[Individual, Individual]:
     """

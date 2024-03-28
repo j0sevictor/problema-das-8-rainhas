@@ -1,5 +1,7 @@
-from individual import Individual, fitness
+from GA import GeneticAlgorithm
+from population import createProbabilities
 
-
-e = Individual([4, 4, 2, 4, 5, 6, 1, 8], 0)
-print(fitness(e))
+if __name__ == '__main__':
+    GA = GeneticAlgorithm()
+    best = GA.run()
+    print(f'Beste Individual:\n {best}')

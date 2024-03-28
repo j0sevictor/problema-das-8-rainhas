@@ -1,1 +1,2 @@
-from .operations import Individual, fitness, crossover
+from .operations import Individual, crossover, mutation
+from .individual import fitness, generateStartedIndividual
