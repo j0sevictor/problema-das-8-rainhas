@@ -12,16 +12,13 @@ def crossover(father: Individual, mother: Individual, generation: int) -> tuple[
     cutIndex = randint(1, SIZE - 2)
     vector1 = father.getVector()[:cutIndex] + mother.getVector()[cutIndex:]
     vector2 = mother.getVector()[:cutIndex] + father.getVector()[cutIndex:]
-
-    individual1 = Individual(vector1, generation)
-    individual2 = Individual(vector2, generation)
     
-    mutation(individual1)
-    mutation(individual2)
+    mutation(vector1)
+    mutation(vector2)
+    
+    return Individual(vector1, generation), Individual(vector2, generation) 
 
-    return individual1, individual2 
-
-def mutation(individual: Individual) -> None:
+def mutation(vector: list[int]) -> None:
     """
     Gera mutações nos genes do indivíduo passado.\n
     Isso a depender da taxa de mutação.
@@ -34,7 +31,7 @@ def mutation(individual: Individual) -> None:
         """
         return choices([True, False], weights=[MUTATION_RATE, 1 - MUTATION_RATE])[0]
     
-    for i in range(individual.getVectorSize()):
+    for i in range(len(vector)):
         if hasMutation():
-            individual.set(i, randint(RANGE_START, RANGE_END))
+            vector[i] = randint(RANGE_START, RANGE_END)
 
