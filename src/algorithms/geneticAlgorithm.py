@@ -1,36 +1,19 @@
 from population import Population, generateStartedPopulation, createProbabilities, selectParents, addPopulations
+from parameters import MAX_TAM_POPULATION, MAX_ITERATION
 from individual import Individual, crossover
-from parameters import FIRST_GENERATION, MAX_TAM_POPULATION, BEST_FITNESS, MAX_ITERATION
+from .algorithm import Algorithm
 
-class GeneticAlgorithm():
+class GeneticAlgorithm(Algorithm):
 
     def __init__(self) -> None:
         self.__population: Population = generateStartedPopulation()
-        self.__generation: int = FIRST_GENERATION
-    
-    def getGeneration(self) -> int:
-        """
-        Retorna a geração atual do algoritmo.
-        """
-        return self.__generation
+        super().__init__()
 
     def getPopulation(self) -> Population:
         """
         Retorna a ppopulação do algoritmo.
         """
         return self.__population
-    
-    def bestFitness(self) -> int:
-        """
-        Retorna o melhor valor de ``fitness`` encontrado.
-        """
-        return self.__population.bestIndividual().getFitness()
-    
-    def hasBestFitness(self) -> bool:
-        """
-        Retorna ``True`` se na população existe um indivíduo com a solução ótima.
-        """
-        return self.bestFitness() == BEST_FITNESS
     
     def removeBadIndividuals(self) -> None:
         """
@@ -40,16 +23,12 @@ class GeneticAlgorithm():
         while self.getPopulation().getPopulationSize() > MAX_TAM_POPULATION:
             self.getPopulation().removeWoseIndividual()
 
-    def nextGeneration(self) -> None:
-        """
-        Incrementa em 1 o atributo geração.
-        """
-        self.__generation += 1
+    # overriding abstract method
+    def bestIndividual(self) -> Individual:
+        return self.__population.bestIndividual()
 
+    # overriding abstract method
     def run(self) -> Individual:
-        """
-        Executa o algoritmo genético e retorna o melhor indivíduo encontrado.
-        """
         while self.getGeneration() <= MAX_ITERATION and not self.hasBestFitness():
             newPopulation = Population()
             probabilities: list[float] = createProbabilities(self.getPopulation())
@@ -65,5 +44,5 @@ class GeneticAlgorithm():
             print(self.getPopulation())
 
             self.nextGeneration()
-        return self.getPopulation().bestIndividual()
+        return self.bestIndividual()
 

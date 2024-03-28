@@ -4,7 +4,7 @@ from parameters import SIZE, RANGE_START, RANGE_END
 class Individual():
     __id: int = 1
 
-    def __init__(self, vector: list[int], generation: int) -> None:
+    def __init__(self, vector: list[int], generation: int = 0) -> None:
         if len(vector) != SIZE:
             raise ValueError(f'O vetor do indivíduo deve conter exatamente {SIZE} posições')
 
