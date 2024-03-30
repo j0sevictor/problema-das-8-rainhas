@@ -30,7 +30,7 @@ Neste repositório, apresento uma implementação de ambos os algoritmos descrit
 
 **Inicialização da População**: Começamos com uma população inicial de indivíduos gerados aleatóriamente. Cada solução representa um arranjo possível das 8 rainhas no tabuleiro.
 
-**Seleção**: Selecionamos os indivíduos para a próxima geração com base em sua avaliação. Soluções com alto *fitness* têm maior probabilidade de serem selecionadas.
+**Seleção**: Selecionamos dois indivíduos com base em sua avaliação. Soluções com alto *fitness* têm maior probabilidade de serem selecionadas.
 
 **Recombinação**: As soluções selecionadas são cruzadas (*crossover*) para produzir descendentes. Isso é feito combinando partes das soluções parentais.
 
