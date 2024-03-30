@@ -13,6 +13,10 @@ class HillClimbing(Algorithm):
         super().__init__()
 
     def toOptimal(self) -> bool:
+        """
+        Se ``True`` então o algoritmo será executado até
+        a solução ótima.
+        """
         return self.__toOptimal
 
     def __setCurrent(self, newIndividual: Individual) -> None:
