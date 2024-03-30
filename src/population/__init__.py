@@ -1,1 +1,2 @@
-from .population import generateStartedPopulation, Population, createProbabilities, selectParents, addPopulations
+from .population import generateStartedPopulation, Population, \
+createProbabilities, selectParents, addPopulations

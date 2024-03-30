@@ -4,6 +4,9 @@ from individual import Individual, crossover
 from .algorithm import Algorithm
 
 class GeneticAlgorithm(Algorithm):
+    """
+    Algoritmos Genético para o problema das 8 rainhas.
+    """
 
     def __init__(self) -> None:
         self.__population: Population = generateStartedPopulation()

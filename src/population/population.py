@@ -90,7 +90,8 @@ class Population():
         self.__qtdIndividuals -= 1
 
     def __repr__(self) -> str:
-        return f'Population(totalFitness={self.__totalFitness}, qtdIndividuals={self.__qtdIndividuals})'
+        return f'Population(totalFitness={self.__totalFitness},\
+        qtdIndividuals={self.__qtdIndividuals})'
 
     def __str__(self) -> str:
         strPop = '-' * 26 + f' {self.getPopulationSize():2} Individuals ' + '-' * 26 + '\n'
@@ -138,4 +139,3 @@ def addPopulations(oldPopulation: Population, newPopulation: Population) -> None
     while added and i < newPopulation.getPopulationSize():
         added = oldPopulation.add(newPopulation.getIndividal(i))
         i += 1
-

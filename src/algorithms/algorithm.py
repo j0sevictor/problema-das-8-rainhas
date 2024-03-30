@@ -3,6 +3,9 @@ from individual import Individual
 from parameters import BEST_FITNESS, FIRST_GENERATION
 
 class Algorithm(ABC):
+    """
+    Classe abstrata para os algoritmos que resolvem o problema.
+    """
 
     def __init__(self) -> None:
         self.__generation: int = FIRST_GENERATION
@@ -12,13 +15,13 @@ class Algorithm(ABC):
         Retorna a geração atual do algoritmo.
         """
         return self.__generation
-    
+
     def nextGeneration(self) -> None:
         """
         Incrementa em 1 o atributo geração.
         """
         self.__generation += 1
-    
+
     def resetGenerations(self) -> None:
         """
         Zera o número de gerações.
@@ -36,13 +39,13 @@ class Algorithm(ABC):
         """
         Retorna o melhor indivíduo com base nos valores de ``fitness`` encontrados.
         """
-    
+
     def bestFitness(self) -> int:
         """
         Retorna o melhor valor de ``fitness`` encontrado.
         """
         return self.bestIndividual().getFitness()
-    
+
     def hasBestFitness(self) -> bool:
         """
         Retorna ``True`` se o indivíduo ótimo foi encontrado.
