@@ -38,7 +38,7 @@ Para executar o algoritmo e resolver o Problema das 8 Rainhas, siga as instruç�
 
 ## Pré-requisito
 
-Certifique-se de ter Python 3 instalado no seu sistema. Você pode baixá-lo em `<a href="https://www.python.org/downloads/" target="_blank">`python.org`</a>`.
+Certifique-se de ter Python 3 instalado no seu sistema. Você pode baixá-lo em <a href="https://www.python.org/downloads/" target="_blank">python.org</a>.
 
 ## Instalação
 
