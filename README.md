@@ -10,7 +10,7 @@ Os algoritmos genéticos usam técnicas de otimização inspiradas na evolução
 
 ## Subida na Colina
 
-O algorítmo de subida na colina se baseia em um princípio básico, a partir de uma solução candidata, análisa-se seus vizinhos, se um deles é melhor, troca-se a solução candidata por esse novo indivíduo. Repeti-se esse processo até que não haja melhorias. O algoritmo só garante encontrar o máximo/mínimo local, mas, o aplicando várias vezes é possível encontrar a solução ótima. 
+O algorítmo de subida na colina se baseia em um princípio básico, a partir de uma solução candidata, análisa-se sua vizinhança, se um vizinho é melhor, troca-se a solução candidata por esse novo indivíduo. Repete-se esse processo até que não haja melhorias. O algoritmo só garante encontrar o máximo/mínimo local, mas, o aplicando várias vezes, é possível encontrar a solução ótima. 
 
 # Sobre este Repositório
 
