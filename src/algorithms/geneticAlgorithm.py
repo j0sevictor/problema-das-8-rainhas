@@ -45,4 +45,3 @@ class GeneticAlgorithm(Algorithm):
 
             self.nextGeneration()
         return self.bestIndividual()
-

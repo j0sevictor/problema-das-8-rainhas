@@ -1,5 +1,5 @@
+from abc import ABC, abstractmethod
 from individual import Individual
-from abc import ABC, abstractclassmethod
 from parameters import BEST_FITNESS, FIRST_GENERATION
 
 class Algorithm(ABC):
@@ -25,19 +25,17 @@ class Algorithm(ABC):
         """
         self.__generation = 0
 
-    @abstractclassmethod
-    def run() -> Individual:
+    @abstractmethod
+    def run(self) -> Individual:
         """
         Executa o algoritmo e retorna o melhor indivíduo encontrado.
         """
-        pass
 
-    @abstractclassmethod
+    @abstractmethod
     def bestIndividual(self) -> Individual:
         """
         Retorna o melhor indivíduo com base nos valores de ``fitness`` encontrados.
         """
-        pass
     
     def bestFitness(self) -> int:
         """
@@ -50,5 +48,3 @@ class Algorithm(ABC):
         Retorna ``True`` se o indivíduo ótimo foi encontrado.
         """
         return self.bestFitness() == BEST_FITNESS
-
-

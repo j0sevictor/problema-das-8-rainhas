@@ -1,6 +1,9 @@
 from algorithms import GeneticAlgorithm, HillClimbing, Algorithm
 
 def main() -> None:
+    """
+    Função principal.
+    """
     while True:
         printMenu()
         option = inputListInt('-> ', [1, 2, 0])
@@ -14,6 +17,9 @@ def main() -> None:
         break
 
 def printMenu() -> None:
+    """
+    Imprime o menu do programa.
+    """
     title: str = ' Problema das 8 Rainhas '
     action: str = ' Escolha um dos algoritmos para a resolução '
 
@@ -24,6 +30,9 @@ def printMenu() -> None:
     print('0 - Sair')
 
 def inputListInt(message: str, options: list[int]) -> None:
+    """
+    Retorna uma das opções especificadas da lista a partir do input do usuário.
+    """
     option = None
     while option not in options:
         option = input(message)
@@ -34,4 +43,3 @@ def inputListInt(message: str, options: list[int]) -> None:
 
 if __name__ == '__main__':
     main()
-

@@ -1,26 +1,29 @@
-from individual import Individual, generateStartedIndividual
 from random import choices
+from individual import Individual, generateStartedIndividual
 from parameters import MAX_TAM_POPULATION
 
 class Population():
+    """
+    Representação da populção de inidivíduos.
+    """
 
     def __init__(self) -> None:
         self.__individuals: list[Individual] = []
         self.__totalFitness = 0
         self.__qtdIndividuals = 0
-    
+
     def getPopulationSize(self) -> int:
         """
         Retorna a quantidade de indivíduos atualmente na população.
         """
         return self.__qtdIndividuals
-    
+
     def getIndividuals(self) -> list[Individual]:
         """
         Retorna a lista de indivíduos da população.
         """
         return self.__individuals
-    
+
     def getTotalFitness(self) -> int:
         """
         Retorna o somatório dos atributos ``fitness`` dos indivíduos.
@@ -32,13 +35,13 @@ class Population():
         Retorna se a população é vazia ou não.
         """
         return self.__qtdIndividuals == 0
-    
+
     def full(self) -> bool:
         """
         Retorna se a população está cheia.
         """
         return self.__qtdIndividuals == MAX_TAM_POPULATION
-    
+
     def getIndividal(self, index: int) -> Individual:
         """
         Retorna o indivíduo da população identificado pelo índice.
@@ -62,7 +65,7 @@ class Population():
                 self.__individuals.insert(i, individual)
                 inserted = True
                 break
-        
+
         if not inserted and not self.full():
             self.__individuals.append(individual)
             inserted = True
@@ -71,13 +74,13 @@ class Population():
             self.__totalFitness += individual.getFitness()
             self.__qtdIndividuals += 1
         return inserted
-    
+
     def bestIndividual(self) -> Individual:
         """
         Retorna o melhor indivíduo da população.
         """
         return self.__individuals[0]
-    
+
     def removeWoseIndividual(self) -> None:
         """
         Remove o indivíduo com pior valor de ``fitness``.
@@ -85,10 +88,10 @@ class Population():
         individual = self.__individuals.pop()
         self.__totalFitness -= individual.getFitness()
         self.__qtdIndividuals -= 1
-    
+
     def __repr__(self) -> str:
         return f'Population(totalFitness={self.__totalFitness}, qtdIndividuals={self.__qtdIndividuals})'
-    
+
     def __str__(self) -> str:
         strPop = '-' * 26 + f' {self.getPopulationSize():2} Individuals ' + '-' * 26 + '\n'
         for individual in self.__individuals:

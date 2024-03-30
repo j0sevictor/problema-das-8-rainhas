@@ -2,6 +2,10 @@ from random import randint
 from parameters import SIZE, RANGE_START, RANGE_END
 
 class Individual():
+    """
+    Representação de um indivíduo.\n
+    Cada indivíduo é uma possível solução para o problema.
+    """
     __id: int = 1
 
     def __init__(self, vector: list[int], generation: int = 0) -> None:
@@ -20,7 +24,7 @@ class Individual():
         Retorna o ID único do indivíduo.
         """
         return self.__id
-    
+
     def getGeneration(self) -> int:
         """
         Retorna na geração em que o indivíduo foi criado.
@@ -32,19 +36,19 @@ class Individual():
         Retorna o vetor de valores do indivíduo.
         """
         return self.__vector
-    
+
     def getVectorSize(self) -> int:
         """
         Retorna o tamanho do vetor.
         """
         return len(self.__vector)
-    
+
     def getFitness(self) -> int:
         """
         Retorna a qualidade do indivíduo.
         """
         return self.__fitness
-    
+
     def get(self, index: int) -> int:
         """
         Retorna o valor da posição do vetor especificada pelo ``index``.
@@ -52,7 +56,7 @@ class Individual():
         if index < 0 or index >= SIZE:
             raise ValueError('Argumento index fora do limite do vetor')
         return self.__vector[index]
-    
+
     def set(self, index: int, value: int) -> None:
         """
         Altera o valor do gene da posição ``index``.\n
@@ -67,12 +71,14 @@ class Individual():
         if isinstance(__value, Individual) and __value.getVector() == self.getVector():
             return True
         return False
-    
+
     def __repr__(self) -> str:
-        return f'Individual(generation={self.__generation}, id={self.__id}, vector={self.__vector}, fitness={self.__fitness})'
-    
+        return f'Individual(generation={self.__generation}, id={self.__id}, \
+        vector={self.__vector}, fitness={self.__fitness})'
+
     def __str__(self) -> str:
-        return f'Generation {self.getGeneration():2} | Genes {self.getVector()} | Fitness {self.getFitness():2} | ID {self.getId()}'
+        return f'Generation {self.getGeneration():2} | Genes {self.getVector()} \
+          | Fitness {self.getFitness():2} | ID {self.getId()}'
 
 
 def fitness(individual: Individual) -> int:
@@ -90,7 +96,7 @@ def fitness(individual: Individual) -> int:
             # Checa se o par de rainhas i, j está na mesma diagonal secundária
             if (i + individual.get(i)) == (j + individual.get(j)): continue
             fitValue += 1
-    return fitValue 
+    return fitValue
 
 def generateStartedIndividual() -> Individual:
     """

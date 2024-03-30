@@ -1,8 +1,9 @@
-from .individual import Individual
 from random import randint, choices
 from parameters import SIZE, RANGE_END, RANGE_START, MUTATION_RATE
+from .individual import Individual
 
-def crossover(father: Individual, mother: Individual, generation: int) -> tuple[Individual, Individual]:
+def crossover(father: Individual, mother: Individual, generation: int) \
+-> tuple[Individual, Individual]:
     """
     Gera dois filhos a partir dos dois indivúduis passados.\n
     Os filhos são criados a partir de um index de corte dos vetores dos pais.\n
@@ -12,10 +13,10 @@ def crossover(father: Individual, mother: Individual, generation: int) -> tuple[
     cutIndex = randint(1, SIZE - 2)
     vector1 = father.getVector()[:cutIndex] + mother.getVector()[cutIndex:]
     vector2 = mother.getVector()[:cutIndex] + father.getVector()[cutIndex:]
-    
+
     mutation(vector1)
     mutation(vector2)
-    
+
     return Individual(vector1, generation), Individual(vector2, generation) 
 
 def mutation(vector: list[int]) -> None:
@@ -30,8 +31,7 @@ def mutation(vector: list[int]) -> None:
         P(False) = 1 - MUTATION_RATE
         """
         return choices([True, False], weights=[MUTATION_RATE, 1 - MUTATION_RATE])[0]
-    
-    for i in range(len(vector)):
+
+    for i, _ in enumerate(vector):
         if hasMutation():
             vector[i] = randint(RANGE_START, RANGE_END)
-

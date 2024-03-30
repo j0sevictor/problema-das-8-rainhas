@@ -3,6 +3,9 @@ from individual import Individual, generateStartedIndividual
 from .algorithm import Algorithm
 
 class HillClimbing(Algorithm):
+    """
+    Algoritmos Subida na Colina para o problema das 8 rainhas.
+    """
 
     def __init__(self, toOptimal: bool=False) -> None:
         self.__current: Individual = generateStartedIndividual()
@@ -17,12 +20,6 @@ class HillClimbing(Algorithm):
         Altera o valor do melhor indivídue encontrado.
         """
         self.__current = newIndividual
-
-    def getExecutions(self) -> int:
-        """
-        Retorna a quantidade de execuções do algoritmo.
-        """
-        return self.__executions
 
     def bestNeighbor(self) -> Individual:
         """
@@ -61,5 +58,3 @@ class HillClimbing(Algorithm):
                 self.__setCurrent(generateStartedIndividual())
                 continue
             return self.bestIndividual()
-            
-              
