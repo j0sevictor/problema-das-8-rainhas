@@ -1,4 +1,5 @@
-from population import Population, generateStartedPopulation, createProbabilities, selectParents, addPopulations
+from population import Population, generateStartedPopulation, createProbabilities,\
+selectParents, addPopulations
 from parameters import MAX_TAM_POPULATION, MAX_ITERATION
 from individual import Individual, crossover
 from .algorithm import Algorithm
@@ -17,7 +18,7 @@ class GeneticAlgorithm(Algorithm):
         Retorna a ppopulação do algoritmo.
         """
         return self.__population
-    
+
     def removeBadIndividuals(self) -> None:
         """
         Remove continuamente o pior elemento da população.\n

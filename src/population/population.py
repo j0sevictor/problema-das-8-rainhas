@@ -97,7 +97,7 @@ class Population():
         strPop = '-' * 26 + f' {self.getPopulationSize():2} Individuals ' + '-' * 26 + '\n'
         for individual in self.__individuals:
             strPop += individual.__str__() + '\n'
-        if self.empty(): 
+        if self.empty():
             strPop += 'Population Empty'
         return strPop
 
@@ -111,7 +111,8 @@ def generateStartedPopulation() -> Population:
         population.add(generateStartedIndividual())
     return population
 
-def selectParents(population: Population, probabilities: list[float]) -> tuple[Individual, Individual]:
+def selectParents(population: Population, probabilities: list[float]) \
+    -> tuple[Individual, Individual]:
     """
     Seleciona dois indivíduos da população com base nas probabilidades de cada um.
     """

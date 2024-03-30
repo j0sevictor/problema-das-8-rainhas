@@ -17,7 +17,7 @@ def crossover(father: Individual, mother: Individual, generation: int) \
     mutation(vector1)
     mutation(vector2)
 
-    return Individual(vector1, generation), Individual(vector2, generation) 
+    return Individual(vector1, generation), Individual(vector2, generation)
 
 def mutation(vector: list[int]) -> None:
     """
