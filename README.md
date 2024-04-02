@@ -54,7 +54,7 @@ Para executar o projeto e resolver o Problema das 8 Rainhas, siga as instruçõe
 
 ## Pré-requisito
 
-Certifique-se de ter Python 3 instalado no seu sistema. Você pode baixá-lo em <a href="https://www.python.org/downloads/" target="_blank">python.org</a>.
+Certifique-se de ter Python 3 instalado no seu sistema, particurlamente o projeto foi feito na versão 3.11 do Python. Você pode baixá-lo em <a href="https://www.python.org/downloads/" target="_blank">python.org</a>.
 
 ## Instalação
 
