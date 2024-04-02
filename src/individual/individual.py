@@ -73,12 +73,10 @@ class Individual():
         return False
 
     def __repr__(self) -> str:
-        return f'Individual(generation={self.__generation}, id={self.__id}, \
-        vector={self.__vector}, fitness={self.__fitness})'
+        return f'Individual(generation={self.__generation}, id={self.__id}, vector={self.__vector}, fitness={self.__fitness})'
 
     def __str__(self) -> str:
-        return f'Generation {self.getGeneration():2} | Genes {self.getVector()} \
-          | Fitness {self.getFitness():2} | ID {self.getId()}'
+        return f'Generation {self.getGeneration():2} | Genes {self.getVector()} | Fitness {self.getFitness():2} | ID {self.getId()}'
 
 
 def fitness(individual: Individual) -> int:
@@ -108,4 +106,4 @@ def generateStartedIndividual() -> Individual:
     vector: list[int] = []
     for _ in range(SIZE):
         vector.append(randint(RANGE_START, RANGE_END))
-    return Individual(vector, 0)
+    return Individual(vector)

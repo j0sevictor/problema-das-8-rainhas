@@ -47,7 +47,6 @@ class Population():
         Retorna o indivíduo da população identificado pelo índice.
         """
         if index < 0 or index >= self.__qtdIndividuals:
-            print(index, self.__qtdIndividuals)
             raise ValueError('index out of bound')
         return self.__individuals[index]
 
@@ -103,7 +102,7 @@ class Population():
 
 def generateStartedPopulation() -> Population:
     """
-    Gera um população de indivíduos gerados aleatóriamente.\n
+    Gera uma população de indivíduos gerados aleatóriamente.\n
     O tamanho da população é definido por ``MAX_TAM_POPULATION``.
     """
     population = Population()

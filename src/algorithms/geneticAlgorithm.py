@@ -6,7 +6,7 @@ from .algorithm import Algorithm
 
 class GeneticAlgorithm(Algorithm):
     """
-    Algoritmos Genético para o problema das 8 rainhas.
+    Algoritmo Genético para o problema das 8 rainhas.
     """
 
     def __init__(self) -> None:
@@ -22,7 +22,7 @@ class GeneticAlgorithm(Algorithm):
     def removeBadIndividuals(self) -> None:
         """
         Remove continuamente o pior elemento da população.\n
-        Isso enquanto a população tenha mais indivíduos que o definido em ``MAX_TAM_POPULATION``.
+        Isso enquanto a população tiver mais indivíduos que o definido em ``MAX_TAM_POPULATION``.
         """
         while self.getPopulation().getPopulationSize() > MAX_TAM_POPULATION:
             self.getPopulation().removeWoseIndividual()
@@ -33,6 +33,7 @@ class GeneticAlgorithm(Algorithm):
 
     # overriding abstract method
     def run(self) -> Individual:
+        self.resetGenerations()
         while self.getGeneration() <= MAX_ITERATION and not self.hasBestFitness():
             newPopulation = Population()
             probabilities: list[float] = createProbabilities(self.getPopulation())

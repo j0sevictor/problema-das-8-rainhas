@@ -4,7 +4,7 @@ from .algorithm import Algorithm
 
 class HillClimbing(Algorithm):
     """
-    Algoritmos Subida na Colina para o problema das 8 rainhas.
+    Algoritmo Subida na Colina para o problema das 8 rainhas.
     """
 
     def __init__(self, toOptimal: bool=False) -> None:
