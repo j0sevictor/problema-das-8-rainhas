@@ -134,8 +134,7 @@ def addPopulations(oldPopulation: Population, newPopulation: Population) -> None
     """
     Adiciona os melhores indivíduos da nova população na antiga.
     """
-    i = 0
-    added = True
-    while added and i < newPopulation.getPopulationSize():
-        added = oldPopulation.add(newPopulation.getIndividal(i))
-        i += 1
+    for individual in newPopulation.getIndividuals():
+        added = oldPopulation.add(individual)
+        if not added:
+            break
