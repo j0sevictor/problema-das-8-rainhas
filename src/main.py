@@ -22,26 +22,25 @@ def printMenu() -> None:
     """
     Imprime o menu do programa.
     """
-    title: str = ' Problema das 8 Rainhas '
-    action: str = ' Escolha um dos algoritmos para a resolução '
+    TITLE: str = ' Problema das 8 Rainhas '
+    ACTION: str = ' Escolha um dos algoritmos para a resolução '
 
-    print(f'\n{title:-^80}')
-    print(f'{action:-^80}\n')
+    print(f'\n{TITLE:-^80}')
+    print(f'{ACTION:-^80}\n')
     print('1 - Algoritmo Genético')
     print('2 - Subida na Encosta')
     print('0 - Sair')
 
-def inputListInt(message: str, options: list[int]) -> None:
+def inputListInt(message: str, options: list[int]) -> int:
     """
     Retorna uma das opções especificadas da lista a partir do input do usuário.
     """
-    option = None
-    while option not in options:
-        option = input(message)
-        if not option.isnumeric():
+    while True:
+        option: str = input(message)
+        if not option.isnumeric() or int(option) not in options:
             continue
-        option = int(option)
-    return option
+        break
+    return int(option)
 
 if __name__ == '__main__':
     main()
