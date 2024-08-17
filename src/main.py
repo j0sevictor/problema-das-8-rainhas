@@ -7,17 +7,16 @@ def main() -> None:
     while True:
         printMenu()
         option = inputListInt('-> ', [1, 2, 0])
+        if not option:
+            break
 
-        if option:
-            algorithms: dict[int, Algorithm] = {
-                1: GeneticAlgorithm(),
-                2: HillClimbing(toOptimal=True)
-            }
+        algorithms: dict[int, Algorithm] = {
+            1: GeneticAlgorithm(),
+            2: HillClimbing(toOptimal=True)
+        }
 
-            bestIndividual = algorithms[option].run()
-            print(f'\nMelhor Indivíduo:\n {bestIndividual}')
-            continue
-        break
+        bestIndividual = algorithms[option].run()
+        print(f'\nMelhor Indivíduo:\n {bestIndividual}')
 
 def printMenu() -> None:
     """
